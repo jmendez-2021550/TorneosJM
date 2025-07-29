@@ -38,29 +38,27 @@
             <h1>¡EL MÁS FÁCIL CAMINO PARA GESTIONAR TU TORNEO!</h1>
             <a href="pagina_torneo.html" class="crear-torneo">MI TORNEO</a>
         </div>
-        <div class="cards-container">
+        <div class="cards-container" id="caracteristicas">
             <div class="card">
                 <div class="card-icon">👤</div>
                 <h2>Usar Gratis</h2>
-                <p>¡Listo para usar! Puedes comenzar a usarlo inmediatamente, sin necesidad de hacer un pago o ingresar informacion financiera.</p>
-                                <a href="#" class="card-button">¡HAZ TU TORNEO!</a>
-
+                <p>¡Listo para usar! Puedes comenzar a usarlo inmediatamente, sin necesidad de hacer un pago o ingresar información financiera.</p>
+                <a href="#" class="card-button">¡HAZ TU TORNEO!</a>
             </div>
             <div class="card">
                 <div class="card-icon">🏆</div>
                 <h2>Tabla de Posiciones y Rankings</h2>
-                <p>Tablas y rankings de jugadores automáticamente calculadas, equipos ganadores, tabla de clasificacion y eliminatoria.</p>
+                <p>Tablas y rankings de jugadores automáticamente calculadas, equipos ganadores, tabla de clasificación y eliminatoria.</p>
                 <a href="#" class="card-button">¡HAZ TU TORNEO!</a>
-
             </div>
             <div class="card">
                 <div class="card-icon">📱</div>
                 <h2>Capacidad</h2>
-                <p>Puedes crear hasta 40 equipos y ver sus estadisticas, tabla de clasificacion sus jugadores partidos ganados y perdidos y posicion en la tabla.</p>
+                <p>Puedes crear hasta 40 equipos y ver sus estadísticas, tabla de clasificación, sus jugadores, partidos ganados y perdidos y posición en la tabla.</p>
                 <a href="#" class="card-button">¡HAZ TU TORNEO!</a>
             </div>
         </div>
-        <div class="torneos-section">
+        <div class="torneos-section" id="torneos">
             <div class="torneos-content">
                 <div class="torneos-icon">🏆</div>
                 <h2>TORNEOS</h2>
@@ -71,7 +69,9 @@
                 </div>
             </div>
         </div>
-        <div id="authModal" class="modal">
+    </main>
+
+    <div id="authModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <div class="tabs">
@@ -110,6 +110,7 @@
             var tabContents = document.querySelectorAll('.tab-content');
             var userInfo = document.querySelector('.user-info');
             var userNameSpan = document.getElementById('user-name');
+            var radioInputs = document.querySelectorAll('.radio input[type="radio"]');
 
             btn.onclick = function() {
                 modal.style.display = "block";
@@ -132,6 +133,16 @@
                     tabContents.forEach(tc => tc.classList.remove('active'));
                     tab.classList.add('active');
                     document.getElementById(target).classList.add('active');
+                });
+            });
+
+            radioInputs.forEach((radio, index) => {
+                radio.addEventListener('change', function() {
+                    if (index === 1) { // Índice 1 corresponde a "Características"
+                        document.getElementById('caracteristicas').scrollIntoView({ behavior: 'smooth' });
+                    } else if (index === 2) { // Índice 2 corresponde a "Torneos"
+                        document.getElementById('torneos').scrollIntoView({ behavior: 'smooth' });
+                    }
                 });
             });
 
